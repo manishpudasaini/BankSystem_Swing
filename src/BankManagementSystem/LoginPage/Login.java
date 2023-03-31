@@ -1,32 +1,30 @@
 package BankManagementSystem.LoginPage;
 
+import BankManagementSystem.LoginPage.AfterLogin.MainTransactionMenu;
 import BankManagementSystem.LoginPage.RegisterForm.RegisterForm;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
 
 //JFRAme is used to make the frame
 public class Login extends JFrame implements ActionListener {
 
     JButton login,clear,register;
-    JTextField textField;
+    JTextField accountTextField;
     JPasswordField textFieldPin;
 
-    Login(){
-
-
-        setTitle("MSS System");
-        setSize(720,570);
-        setVisible(true);
-        setLocation(250,120);
-        setLayout(null);
-
+    public Login(){
 
         //to change background color
         getContentPane().setBackground(Color.WHITE);
+        setTitle("MSS System");
+        setSize(720,570);
+        setLocation(250,120);
+        setLayout(null);
 
         //to insert the image we have to create imageicon class object
         ImageIcon imageIcon =
@@ -49,7 +47,7 @@ public class Login extends JFrame implements ActionListener {
 
 
         //for title
-        JLabel jlabelText = new JLabel("Welcome to our system");
+        JLabel jlabelText = new JLabel("MSS System");
         Font textFont = new Font("Italic",Font.BOLD,34);
         jlabelText.setFont(textFont);
         jlabelText.setBounds(180,75,450,40);
@@ -63,9 +61,9 @@ public class Login extends JFrame implements ActionListener {
         add(accountNum);
 
         //for text field or input box
-        textField = new JTextField();
-        textField.setBounds(300,200,240,40);
-        add(textField);
+        accountTextField = new JTextField();
+        accountTextField.setBounds(300,200,240,40);
+        add(accountTextField);
 
         //for card pin number
         JLabel cardPin = new JLabel("Pin number:");
@@ -101,6 +99,9 @@ public class Login extends JFrame implements ActionListener {
         register.addActionListener(this);
         add(register);
 
+
+        setVisible(true);
+
     }
 
     public static void main(String[] args) {
@@ -110,11 +111,39 @@ public class Login extends JFrame implements ActionListener {
     //this function is used when we click the button
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
+
+        //for validation of login
         if(actionEvent.getSource() == login){
+
+            DbConnection dbConnection = new DbConnection();
+            ResultSet resultSet = null;
+
+
+            String accountNUmber = accountTextField.getText();
+            String pinNumber = textFieldPin.getText();
+
+            String query =
+                    "select * from Login where Account_Number = '"+accountNUmber+"' and Pin_Number = '"+pinNumber+"'";
+
+            //now executing the query using database
+            try {
+
+                //when the query is used it give back the data in the form of Resultset
+                resultSet = dbConnection.s.executeQuery(query);
+                if(resultSet.next()){
+                    setVisible(false);
+                    new MainTransactionMenu(pinNumber).setVisible(true);
+                }else {
+                    JOptionPane.showMessageDialog(null,"Your account number and pin is invalid");
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
 
         }else if (actionEvent.getSource() == clear){
-            textField.setText("");
+            accountTextField.setText("");
             textFieldPin.setText("");
 
         } else if (actionEvent.getSource() == register) {

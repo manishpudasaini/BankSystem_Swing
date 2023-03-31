@@ -20,12 +20,9 @@ public class RegisterForm extends JFrame implements ActionListener {
     public RegisterForm(){
         setTitle("Register user");
         setSize(740,670);
-        setVisible(true);
+        getContentPane().setBackground(Color.WHITE);
         setLocation(250,120);
         setLayout(null);
-
-        getContentPane().setBackground(Color.WHITE);
-
 
         JLabel jlabelText = new JLabel("Registration form: ");
         Font textFont = new Font("Italic",Font.BOLD,23);
@@ -143,6 +140,9 @@ public class RegisterForm extends JFrame implements ActionListener {
         add(next);
 
 
+        setVisible(true);
+
+
     }
 
     @Override
@@ -218,6 +218,9 @@ public class RegisterForm extends JFrame implements ActionListener {
                         "insert into signup values('"+from_Number+"','"+name+"','"+address+"','"+email+"','"+date_of_birth+"','"+phone_number+"','"+pin_code+"','"+gender+"')";
                 //now we have to execute the query using the statement inside connection class
                 databaseConnection.s.execute(query);
+
+                setVisible(false);
+                new AdditionalInformation(from_Number).setVisible(true);
 
             }
 
