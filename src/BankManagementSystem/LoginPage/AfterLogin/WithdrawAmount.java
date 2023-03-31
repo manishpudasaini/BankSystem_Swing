@@ -54,7 +54,7 @@ public class WithdrawAmount extends JFrame implements ActionListener {
         imageBackground.add(backButton);
 
 
-        setUndecorated(false);
+        setUndecorated(true);
         setVisible(true);
     }
 
@@ -78,6 +78,7 @@ public class WithdrawAmount extends JFrame implements ActionListener {
                     dbConnection.s.execute(query);
                     JOptionPane.showMessageDialog(null,"Amount Rs "+amonutField+" withdraw successfully");
 
+                    setVisible(false);
                     new MainTransactionMenu(Pin_number).setVisible(true);
 
 
@@ -86,6 +87,8 @@ public class WithdrawAmount extends JFrame implements ActionListener {
                 }
 
             }
+
+
 
         } else if (e.getSource() == backButton) {
             setVisible(false);

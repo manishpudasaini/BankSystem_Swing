@@ -55,7 +55,7 @@ public class DepositeAmount extends JFrame implements ActionListener {
         imageBackground.add(backButton);
 
 
-        setUndecorated(false);
+        setUndecorated(true);
         setVisible(true);
     }
 

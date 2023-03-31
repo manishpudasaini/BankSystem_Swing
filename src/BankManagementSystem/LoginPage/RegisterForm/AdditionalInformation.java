@@ -19,7 +19,7 @@ public class AdditionalInformation extends JFrame implements ActionListener {
     public AdditionalInformation(String formNumber){
         this.formNum = formNumber;
         setTitle("Additional Information");
-        setSize(740,670);
+        setSize(700,550);
         setLocation(250,120);
         setLayout(null);
         getContentPane().setBackground(Color.WHITE);
@@ -148,7 +148,7 @@ public class AdditionalInformation extends JFrame implements ActionListener {
 
         //button
         next = new JButton("Next");
-        next.setBounds(300,400,80,30);
+        next.setBounds(500,450,80,30);
         next.setBackground(Color.black);
         next.setForeground(Color.white);
         //actionlistner using

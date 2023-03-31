@@ -17,7 +17,7 @@ public class FinalRegistration extends JFrame implements ActionListener {
     public FinalRegistration(String formNum){
         this.formNum = formNum;
         setTitle("Final Registration");
-        setSize(800,750);
+        setSize(800,700);
         setLocation(250,120);
         setLayout(null);
         getContentPane().setBackground(Color.WHITE);
@@ -49,7 +49,7 @@ public class FinalRegistration extends JFrame implements ActionListener {
         savingAccount = new JRadioButton("Saving Account");
         Font savingFont = new Font("Italic",Font.BOLD,15);
         savingAccount.setFont(savingFont);
-        savingAccount.setBounds(150,150,200,30);
+        savingAccount.setBounds(150,130,200,30);
         savingAccount.setBackground(Color.WHITE);
         add(savingAccount);
 
@@ -57,7 +57,7 @@ public class FinalRegistration extends JFrame implements ActionListener {
         fixedDepositeAccount = new JRadioButton("Fixed Deposite Account");
         Font fixedFont = new Font("Italic",Font.BOLD,15);
         fixedDepositeAccount.setFont(fixedFont);
-        fixedDepositeAccount.setBounds(400,150,300,30);
+        fixedDepositeAccount.setBounds(400,130,300,30);
         fixedDepositeAccount.setBackground(Color.WHITE);
         add(fixedDepositeAccount);
 
@@ -70,21 +70,21 @@ public class FinalRegistration extends JFrame implements ActionListener {
         JLabel accountNumber= new JLabel("Account Number :: ");
         Font accountNumberFont = new Font("Italic",Font.BOLD,17);
         accountNumber.setFont(accountNumberFont);
-        accountNumber.setBounds(130,250,200,40);
+        accountNumber.setBounds(130,220,200,40);
         add(accountNumber);
 
         //CARD NUMBER
         JLabel cardNumber= new JLabel("7143-XXXX-XXXX-XXXX ");
         Font cardNumberFont = new Font("Italic",Font.BOLD,17);
         cardNumber.setFont(cardNumberFont);
-        cardNumber.setBounds(360,250,400,40);
+        cardNumber.setBounds(360,220,400,40);
         add(cardNumber);
 
         //CARD NUMBER Info
         JLabel cardNumberInfo= new JLabel("(16 digit acc number)");
         Font cardNumberInfoFont = new Font("Italic",Font.BOLD,12);
         cardNumberInfo.setFont(cardNumberInfoFont);
-        cardNumberInfo.setBounds(360,270,400,40);
+        cardNumberInfo.setBounds(360,240,400,40);
         add(cardNumberInfo);
 
         //Pin Number
@@ -152,7 +152,7 @@ public class FinalRegistration extends JFrame implements ActionListener {
 
         //Buttons submit
         Submit = new JButton("Submit");
-        Submit.setBounds(160,570,100,30);
+        Submit.setBounds(300,630,100,30);
         Submit.setBackground(Color.black);
         Submit.setForeground(Color.white);
         Submit.addActionListener(this);
@@ -160,13 +160,14 @@ public class FinalRegistration extends JFrame implements ActionListener {
 
         //Buttons cancel
         Cancel = new JButton("Cancel");
-        Cancel.setBounds(320,570,100,30);
+        Cancel.setBounds(490,630,100,30);
         Cancel.setBackground(Color.black);
         Cancel.setForeground(Color.white);
         Cancel.addActionListener(this);
         add(Cancel);
 
 
+        setUndecorated(true);
         setVisible(true);
 
     }
@@ -222,6 +223,7 @@ public class FinalRegistration extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(null,"Your account number is :: "+accountNumber+
                             "\n Pin code :: "+pinNumber);
 
+                    setVisible(false);
                     new Login().setVisible(true);
 
 
@@ -234,8 +236,8 @@ public class FinalRegistration extends JFrame implements ActionListener {
 
 
         } else if (e.getSource() == Cancel) {
-
-
+            setVisible(false);
+            new Login().setVisible(true);
         }
 
     }

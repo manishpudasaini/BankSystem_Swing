@@ -115,7 +115,9 @@ public class MainTransactionMenu extends JFrame implements ActionListener {
         } else if (e.getSource() == checkBalanceButton) {
             setVisible(false);
             new ViewBalance(Pin_NUmber).setVisible(true);
-
+        }else if(e.getSource() == statementButton){
+            setVisible(false);
+            new TransactionStatement(Pin_NUmber).setVisible(true);
         }
 
     }

@@ -73,7 +73,7 @@ public class ChangePin extends JFrame implements ActionListener {
         backButton.addActionListener(this);
         imageBackground.add(backButton);
 
-        setUndecorated(false);
+        setUndecorated(true);
         setVisible(true);
 
     }

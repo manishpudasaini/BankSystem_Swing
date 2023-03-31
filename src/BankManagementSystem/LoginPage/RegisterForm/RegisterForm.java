@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class RegisterForm extends JFrame implements ActionListener {
     long randomNumber;
-    JTextField textFieldNAme,textFieldAddress,textFieldEmail,textFieldPhone,textFieldPin;
+    JTextField textFieldNAme,textFieldAddress,textFieldEmail,textFieldPhone;
     JDateChooser jDateChooser;
     JRadioButton radioButtonMale,radioButtonFemale;
     JButton next;
@@ -19,7 +19,7 @@ public class RegisterForm extends JFrame implements ActionListener {
 
     public RegisterForm(){
         setTitle("Register user");
-        setSize(740,670);
+        setSize(690,550);
         getContentPane().setBackground(Color.WHITE);
         setLocation(250,120);
         setLayout(null);
@@ -118,21 +118,11 @@ public class RegisterForm extends JFrame implements ActionListener {
         textFieldPhone.setBounds(160,350,220,30);
         add(textFieldPhone);
 
-        //Pin number section
-        JLabel pinCode = new JLabel("Pin code :");
-        Font pinFont = new Font("Italic",Font.BOLD,15);
-        pinCode.setFont(pinFont);
-        pinCode.setBounds(70,400,130,30);
-        add(pinCode);
-
-        textFieldPin= new JTextField();
-        textFieldPin.setBounds(160,400,220,30);
-        add(textFieldPin);
 
 
         //button
         next = new JButton("Next");
-        next.setBounds(300,450,80,30);
+        next.setBounds(450,440,80,30);
         next.setBackground(Color.black);
         next.setForeground(Color.white);
         //actionlistner using
@@ -153,7 +143,6 @@ public class RegisterForm extends JFrame implements ActionListener {
         String email = textFieldEmail.getText();
         String date_of_birth = ((JTextField)jDateChooser.getDateEditor().getUiComponent()).getText();
         String phone_number = textFieldPhone.getText();
-        String pin_code = textFieldPin.getText();
         String gender = null;
                 if(radioButtonMale.isSelected()){
                     gender="Male";
@@ -197,14 +186,6 @@ public class RegisterForm extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null,"Please enter your Phone number!!");
             }
 
-            //validation for pin code
-            else if(pin_code.equals("")){
-                //this is used to pop up the message box if user does not enter the name
-                JOptionPane.showMessageDialog(null,"Please choose pin number!!");
-            } else if (!(pin_code.length()==4)) {
-                JOptionPane.showMessageDialog(null,"Please choose 4 pin numbers!!");
-            }
-
             //validation for gender
             else if(gender.equals("")){
                 //this is used to pop up the message box if user does not enter the name
@@ -215,7 +196,7 @@ public class RegisterForm extends JFrame implements ActionListener {
                 DbConnection databaseConnection = new DbConnection();
                 //query which helps to insert data inside the signup table created in database
                 String query =
-                        "insert into signup values('"+from_Number+"','"+name+"','"+address+"','"+email+"','"+date_of_birth+"','"+phone_number+"','"+pin_code+"','"+gender+"')";
+                        "insert into signup values('"+from_Number+"','"+name+"','"+address+"','"+email+"','"+date_of_birth+"','"+phone_number+"','"+gender+"')";
                 //now we have to execute the query using the statement inside connection class
                 databaseConnection.s.execute(query);
 

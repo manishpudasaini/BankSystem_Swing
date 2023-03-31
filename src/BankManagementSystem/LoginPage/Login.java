@@ -22,7 +22,7 @@ public class Login extends JFrame implements ActionListener {
         //to change background color
         getContentPane().setBackground(Color.WHITE);
         setTitle("MSS System");
-        setSize(720,570);
+        setSize(680,570);
         setLocation(250,120);
         setLayout(null);
 
