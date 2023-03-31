@@ -1,6 +1,7 @@
 package BankManagementSystem.LoginPage.RegisterForm;
 
 import BankManagementSystem.LoginPage.DbConnection;
+import BankManagementSystem.LoginPage.Login;
 
 import javax.swing.*;
 import java.awt.*;
@@ -220,6 +221,8 @@ public class FinalRegistration extends JFrame implements ActionListener {
 
                     JOptionPane.showMessageDialog(null,"Your account number is :: "+accountNumber+
                             "\n Pin code :: "+pinNumber);
+
+                    new Login().setVisible(true);
 
 
                 }
