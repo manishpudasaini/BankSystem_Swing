@@ -85,12 +85,14 @@ public class ChangePin extends JFrame implements ActionListener {
             try {
                 String newPin = textFieldold.getText();
                 String rePin = textFieldNew.getText();
-                if(!newPin.equals(rePin)){
-                    JOptionPane.showMessageDialog(null,"Please enter same pin number");
-                }
+
                 if(newPin.equals("")){
                     JOptionPane.showMessageDialog(null,"Please enter your new pin");
-                }else {
+                }
+                else if(!newPin.equals(rePin)){
+                    JOptionPane.showMessageDialog(null,"Please enter same pin number");
+                }
+                else {
 
                     DbConnection dbConnection = new DbConnection();
 
